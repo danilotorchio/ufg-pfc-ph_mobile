@@ -51,6 +51,7 @@ class _AppViewState extends State<AppView> {
       builder: (_, child) => BlocListener<AuthBloc, AuthState>(
         listenWhen: (previous, current) => previous.status != current.status,
         listener: (context, state) => _handleAuthStatus(state, _navigator),
+        child: child,
       ),
       initialRoute: SplashPage.route,
       onGenerateRoute: locator.get<FluroRouter>().generator,

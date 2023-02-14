@@ -30,7 +30,7 @@ void main() async {
   AppRoutes.configure(locator.get<FluroRouter>());
 
   runZonedGuarded(
-    () => const App(),
+    () => runApp(const App()),
     (error, stack) => log(error.toString(), stackTrace: stack),
   );
 }

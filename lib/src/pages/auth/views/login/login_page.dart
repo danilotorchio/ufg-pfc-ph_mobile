@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'login_view.dart';
+
 class LoginPage extends StatelessWidget {
   static String route = '/auth/login';
 
@@ -7,6 +9,6 @@ class LoginPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return const LoginView();
   }
 }

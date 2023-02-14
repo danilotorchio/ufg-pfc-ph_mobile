@@ -14,7 +14,7 @@ class SplashPage extends StatelessWidget {
       logo: Image.asset(_logo),
       logoWidth: 140.0,
       showLoader: true,
-      loadingText: const Text('pH Station'),
+      loadingText: const Text('Carregando...'),
       loaderColor: Theme.of(context).primaryColor,
     );
   }
