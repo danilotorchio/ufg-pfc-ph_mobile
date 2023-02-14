@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "348513316290",
+    "project_id": "ufg-pfc-sonda-ph",
+    "storage_bucket": "ufg-pfc-sonda-ph.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:348513316290:android:7a9c5baba649e38e8aba5b",
+        "android_client_info": {
+          "package_name": "br.ufg.pfc.ph_mobile"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "348513316290-tkqsjm2rfb25i6h15e7pfs2j4jk5iuir.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDsm4d26ZavQgtlqEpKYjlGUZvtH30zxOE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "348513316290-tkqsjm2rfb25i6h15e7pfs2j4jk5iuir.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "348513316290-82vbdkigt50ge4m6dunomt1gg6m3il93.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "br.ufg.pfc.phMobile"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
