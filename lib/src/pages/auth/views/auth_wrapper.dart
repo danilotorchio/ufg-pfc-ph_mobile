@@ -35,21 +35,18 @@ class AuthWrapper extends StatelessWidget {
                 vertical: 32.0,
               ),
               child: Column(
-                mainAxisSize: MainAxisSize.max,
                 children: [
-                  Column(
-                    children: [
-                      Container(
-                        alignment: Alignment.center,
-                        height: 120.0,
-                        width: double.infinity,
-                        child: const UniversityLogo(scale: 1.4),
-                      ),
-                      const SizedBox(height: 36.0),
-                      Row(
-                        mainAxisSize: MainAxisSize.max,
-                        mainAxisAlignment: MainAxisAlignment.center,
+                  Expanded(
+                    child: SingleChildScrollView(
+                      child: Column(
                         children: [
+                          Container(
+                            alignment: Alignment.center,
+                            height: 120.0,
+                            width: double.infinity,
+                            child: const UniversityLogo(scale: 1.4),
+                          ),
+                          const SizedBox(height: 36.0),
                           Text(
                             'pH Station',
                             style: Theme.of(context)
@@ -59,14 +56,13 @@ class AuthWrapper extends StatelessWidget {
                                   color: Theme.of(context).primaryColorDark,
                                 ),
                           ),
+                          const SizedBox(height: 36.0),
+                          SizedBox(
+                            child: bodyBuilder(context),
+                          ),
                         ],
                       ),
-                    ],
-                  ),
-                  const SizedBox(height: 36.0),
-                  Expanded(
-                    flex: 1,
-                    child: bodyBuilder(context),
+                    ),
                   ),
                   const SizedBox(height: 16.0),
                   footerBuilder(context),

@@ -98,13 +98,11 @@ class _LoginViewState extends State<LoginView> {
               }),
             ),
             const SizedBox(height: 32.0),
-            BlocBuilder<AuthBloc, AuthState>(
-              buildWhen: (previous, current) {
-                return previous.loading != current.loading;
-              },
-              builder: (_, state) => AppButton(
+            BlocSelector<AuthBloc, AuthState, bool>(
+              selector: (state) => state.loading,
+              builder: (context, state) => AppButton(
                 label: 'Confirmar login',
-                loading: state.loading,
+                loading: state,
                 onPressed: _submit,
               ),
             ),
