@@ -26,6 +26,9 @@ dependencies:
   json_annotation: ^4.8.0
   easy_splash_screen: ^1.0.4
   fluro: ^2.0.4
+  flutter_blue_plus: ^1.4.0
+  permission_handler: ^10.2.0
+  shared_preferences: ^2.0.17
 
 dev_dependencies:
   flutter_lints: ^2.0.0

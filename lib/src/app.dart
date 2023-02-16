@@ -6,7 +6,15 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:flex_color_scheme/flex_color_scheme.dart';
 
-import 'shared/shared.dart' show locator, AuthBloc, AuthState, AuthStatus;
+import 'shared/shared.dart'
+    show
+        locator,
+        setupPermissions,
+        AuthBloc,
+        AuthState,
+        AuthStatus,
+        StationRepository;
+
 import 'pages/pages.dart' show SplashPage, LoginPage, HomePage;
 
 class App extends StatelessWidget {
@@ -14,9 +22,12 @@ class App extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider<AuthBloc>(
-      create: (_) => AuthBloc(),
-      child: const AppView(),
+    return RepositoryProvider(
+      create: (context) => StationRepository(),
+      child: BlocProvider<AuthBloc>(
+        create: (_) => AuthBloc(),
+        child: const AppView(),
+      ),
     );
   }
 }
@@ -66,6 +77,11 @@ class _AppViewState extends State<AppView> {
         navigator.pushNamedAndRemoveUntil(LoginPage.route, (route) => false);
         break;
       case AuthStatus.authenticated:
+        Future.delayed(Duration.zero, () async {
+          setupPermissions();
+          context.read<StationRepository>().turnBluetoothOn();
+        });
+
         navigator.pushNamedAndRemoveUntil(HomePage.route, (route) => false);
         break;
     }

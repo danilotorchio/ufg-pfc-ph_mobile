@@ -1,15 +1,17 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_blue_plus/flutter_blue_plus.dart';
 
 import 'package:ph_mobile/src/shared/shared.dart'
     show StationRepository, StationCubit;
 
-import 'home_view.dart';
+import 'settings_view.dart';
 
-class HomePage extends StatelessWidget {
-  static String route = '/home';
+class SettingsPage extends StatelessWidget {
+  static String route = '/settings';
+  final BluetoothDevice device;
 
-  const HomePage({super.key});
+  const SettingsPage({super.key, required this.device});
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +19,7 @@ class HomePage extends StatelessWidget {
 
     return BlocProvider(
       create: (context) => StationCubit(repository),
-      child: const HomeView(),
+      child: SettingsView(device: device),
     );
   }
 }
