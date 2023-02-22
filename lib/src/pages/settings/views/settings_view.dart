@@ -1,9 +1,12 @@
-import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_blue_plus/flutter_blue_plus.dart';
 
+import 'package:email_validator/email_validator.dart';
+
 import 'package:ph_mobile/src/shared/shared.dart';
+
+import '../../pages.dart' show HomePage;
 
 class SettingsView extends StatefulWidget {
   final BluetoothDevice device;
@@ -54,7 +57,7 @@ class _SettingsViewState extends State<SettingsView> {
     );
   }
 
-  void _submit() {
+  void _submit(BuildContext context) async {
     if (_formKey.currentState?.validate() ?? false) {
       final settings = SettingsDto(
         wifiSSID: _wifiSSID,
@@ -64,7 +67,20 @@ class _SettingsViewState extends State<SettingsView> {
         apiUrl: _apiUrl,
       );
 
-      context.read<StationCubit>().applySettings(settings, widget.device);
+      await context.read<StationCubit>().applySettings(settings, widget.device);
+
+      Future.delayed(Duration.zero, () {
+        ScaffoldMessenger.of(context)
+          ..hideCurrentSnackBar()
+          ..showSnackBar(const SnackBar(
+            content: Text('Dados atualizados com sucesso!'),
+          ));
+
+        Navigator.of(context).pushNamedAndRemoveUntil(
+          HomePage.route,
+          (route) => false,
+        );
+      });
     }
   }
 
@@ -88,7 +104,7 @@ class _SettingsViewState extends State<SettingsView> {
               child: AppButton(
                 label: 'Enviar configuração',
                 loading: state,
-                onPressed: _submit,
+                onPressed: () => _submit(context),
               ),
             ),
           ),

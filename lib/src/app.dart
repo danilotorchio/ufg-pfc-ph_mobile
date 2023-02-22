@@ -50,7 +50,7 @@ class _AppViewState extends State<AppView> {
       title: 'pH Station',
       theme: FlexThemeData.light(scheme: FlexScheme.bahamaBlue),
       darkTheme: FlexThemeData.dark(scheme: FlexScheme.bahamaBlue),
-      themeMode: ThemeMode.system,
+      themeMode: ThemeMode.light,
       localizationsDelegates: const [
         GlobalWidgetsLocalizations.delegate,
         GlobalMaterialLocalizations.delegate,
